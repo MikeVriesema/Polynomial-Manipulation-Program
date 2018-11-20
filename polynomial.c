@@ -1,82 +1,88 @@
-
+/*///////////////////////////////////////////////////////////////////////
+ * Assignment 3 CE4703
+ * polynomial.c
+ * 
+ * C file for polynomial data type and the functions
+ * to manipulate the polynomials
+ * 
+ * Authors: Mike Vriesema 17212359 
+ * 			Luke O'Sullivan Griffin 17184614 
+ * 			Ryan O'Connor 17209382 
+ * 			Conall McAteer 18173586 
+ * 			Gearoid Kirwan 17213266
+ * 
+ * Date Last Modified: 20.11.2018
+ *///////////////////////////////////////////////////////////////////////
 #include <stdlib.h>
 #include <stdio.h>
 #include "polynomial.h"
 
- int readPoly(struct poly p[10])
- {
-	int t1,i;
 
-	printf("\n\n Enter the total number of terms in the polynomial:");
-	scanf("%d",&t1);
 
-	printf("\n Enter the COEFFICIENT and EXPONENT in DESCENDING ORDER\n");
-	for(i=0;i<t1;i++)
-	{
-		printf("   Enter the Coefficient(%d): ",i+1);
-		scanf("%d",&p[i].coeff);
-		printf("      Enter the exponent(%d): ",i+1);
-		scanf("%d",&p[i].expo);        /* only statement in loop */
-	}
-	return(t1);
- }
+/*
+	Function that obtains required data for a polynomial from
+	the user, constructs a polynomial (linked list of terms)
+	and returns a pointer to the first (head) term.
+*/
+poly create(){}
 
- int addPoly(struct poly p1[10],struct poly p2[10],int t1,int t2,struct poly p3[10])
- {
-	int i=0,j=0,k=0;
+/*
+	Function that takes in a polynomial and deletes it
+*/
+void delete(poly){}
 
-	while(i<t1 && j<t2)
-	{
-		if(p1[i].expo==p2[j].expo)
-		{
-			p3[k].coeff=p1[i].coeff + p2[j].coeff;
-			p3[k].expo=p1[i].expo;
+/*
+	Function that takes two polynomials, constructs and returns 
+	a new polynomial that is the result of adding polynomials p1 and p2
+*/
+poly add(poly p1, poly p2){
 
-			i++;
-			j++;
-			k++;
-		}
-		else if(p1[i].expo>p2[j].expo)
-		{
-			p3[k].coeff=p1[i].coeff;
-			p3[k].expo=p1[i].expo;
-			i++;
-			k++;
-		}
-		else
-		{
-			p3[k].coeff=p2[j].coeff;
-			p3[k].expo=p2[j].expo;
-			j++;
-			k++;
-		}
-	}
+}
 
-	/* for rest over terms of polynomial 1 */
-	while(i<t1)
-	{
-		p3[k].coeff=p1[i].coeff;
-		p3[k].expo=p1[i].expo;
-		i++;
-		k++;
-	}
-	/* for rest over terms of polynomial 2 */
-	while(j<t2)
-	{
-		p3[k].coeff=p2[j].coeff;
-		p3[k].expo=p2[j].expo;
-		j++;
-		k++;
-	}
+/*
+	Function that takes two polynomials, constructs and returns 
+	a new polynomial that is the result of subtracting polynomial p2 from p
+*/
+poly subtract(poly p1, poly p2){
 
-	return(k); /* k is number of terms in resultant polynomial*/
- }
+}
 
- void displayPoly(struct poly p[10],int term)
- {
-	int k;
+/*
+	Function that takes a polynomial, constructs and returns 
+	a new polynomial that is the result of multiplying polynomial p and double value
+*/
+poly multiply(poly p, double value){
 
-	for(k=0;k<term-1;k++)
-	printf("%d(x^%d)+",p[k].coeff,p[k].expo);
-	printf("%d(x^%d)",p[term-1].coeff,p[term-1].expo);
+}
+
+/*
+	Function that takes a polynomial, constructs and returns 
+	a new polynomial that is the result of dividing polynomial p and double value
+*/
+poly divide(poly p, double value){
+
+}
+
+/*
+	Function that normalises the polynomial adjusting the coefficients so that
+    the coefficient of the highest order is 1
+*/
+poly normalise(poly p){
+
+}
+
+/*
+	Function that displays the highest order of the polynomial
+    returning the highest power and the coefficient
+*/
+poly order(poly p){
+
+}
+
+/*
+	Function that displays the polynomial to the standard output
+	in the traditional mathematical form
+*/
+void display(poly p){
+
 }
