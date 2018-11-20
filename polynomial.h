@@ -1,3 +1,18 @@
+/*///////////////////////////////////////////////////////////////////////
+ * Assignment 3 CE4703
+ * polynomial.h
+ * 
+ * Header file for polynomial data type and the function declarations
+ * to manipulate the polynomials
+ * 
+ * Authors: Mike Vriesema 17212359 
+ * 			Luke O'Sullivan Griffin 17184614 
+ * 			Ryan O'Connor 17209382 
+ * 			Conall McAteer 18173586 
+ * 			Gearoid Kirwan 17213266
+ * 
+ * Date Last Modified: 20.11.2018
+ *///////////////////////////////////////////////////////////////////////
 #ifndef POLYNOMIAL_H
 #define POLYNOMIAL_H
 
@@ -9,7 +24,7 @@ struct polynomial
 };
 typedef struct polynomial poly;
 
-/* Function Declarations: */
+//FUNCTION DECLARATIONS:
 poly create();
 void delete(poly);
 poly add(poly p1, poly p2);
@@ -30,21 +45,17 @@ poly create();
 /*
 	Function that takes in a polynomial and deletes it
 */
-void delete (poly);
+void delete(poly);
 
 /*
 	Function that takes two polynomials, constructs and returns 
 	a new polynomial that is the result of adding polynomials p1 and p2
-	
-	return NULL if either p1 or p2 is NULL
 */
 poly add(poly p1, poly p2);
 
 /*
 	Function that takes two polynomials, constructs and returns 
 	a new polynomial that is the result of subtracting polynomial p2 from p1
-	
-	return NULL if either p1 or p2 is NULL
 */
 poly subtract(poly p1, poly p2);
 
