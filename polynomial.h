@@ -11,7 +11,7 @@ typedef struct polynomial poly;
 
 /* Function Declarations: */
 poly create();
-void delete (poly);
+void delete(poly);
 poly add(poly p1, poly p2);
 poly subtract(poly p1, poly p2);
 poly multiply(poly p, double value);
