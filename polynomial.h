@@ -1,7 +1,7 @@
 #ifndef POLYNOMIAL_H
 #define POLYNOMIAL_H
 
-/* declare structure for polynomial */
+/* Declare structure for polynomial */
 struct polynomial
 {
     double coefficient;
@@ -9,33 +9,28 @@ struct polynomial
 };
 typedef struct polynomial poly;
 
-/* function prototypes */
-int readPoly(struct polynomial[]);
-int addPoly(struct polynomial p1[10],struct polynomial p2[10],int t1,int t2,struct polynomial p3[10]);
-void displayPoly(struct polynomial[], int terms);
-
-#endif
-
-
-#ifndef POLYNOMIALHEADER
-#define  POLYNOMIALHEADER
-	
-struct term {
-	int coef;
-	int exp;
-	struct term  *next;
-};
-
-typedef struct term Term;
-
-typedef Term *Polynomial;
+/* Function Declarations: */
+poly create();
+void delete (poly);
+poly add(poly p1, poly p2);
+poly subtract(poly p1, poly p2);
+poly multiply(poly p, double value);
+poly divide(poly p, double value);
+poly normalise(poly p);
+poly order(poly p);
+void display(poly p);
 
 /*
 	Function that obtains required data for a polynomial from
 	the user, constructs a polynomial (linked list of terms)
 	and returns a pointer to the first (head) term.
-*/	
-Polynomial create();
+*/
+poly create();
+
+/*
+	Function that takes in a polynomial and deletes it
+*/
+void delete (poly);
 
 /*
 	Function that takes two polynomials, constructs and returns 
@@ -43,7 +38,7 @@ Polynomial create();
 	
 	return NULL if either p1 or p2 is NULL
 */
-Polynomial add(Polynomial p1, Polynomial p2);
+poly add(poly p1, poly p2);
 
 /*
 	Function that takes two polynomials, constructs and returns 
@@ -51,28 +46,36 @@ Polynomial add(Polynomial p1, Polynomial p2);
 	
 	return NULL if either p1 or p2 is NULL
 */
-Polynomial subtract(Polynomial p1, Polynomial p2);
+poly subtract(poly p1, poly p2);
 
 /*
-	Function that takes two polynomials, constructs and returns 
-	a new polynomial that is the result of multiplying polynomials p1 and p2
-	
-	return NULL if either p1 or p2 is NULL
+	Function that takes a polynomial, constructs and returns 
+	a new polynomial that is the result of multiplying polynomial p and double value
 */
-Polynomial multiply(Polynomial p1, Polynomial p2);
+poly multiply(poly p, double value);
 
 /*
-	Function that takes a polynomial, evaluates that polynomial at 
-	a given value and returns the result of evaluation
-	
-	return 0 if p is NULL
+	Function that takes a polynomial, constructs and returns 
+	a new polynomial that is the result of dividing polynomial p and double value
 */
-int evaluate(Polynomial p, int value);
+poly divide(poly p, double value);
+
+/*
+	Function that normalises the polynomial adjusting the coefficients so that
+    the coefficient of the highest order is 1
+*/
+poly normalise(poly p);
+
+/*
+	Function that displays the highest order of the polynomial
+    returning the highest power and the coefficient
+*/
+poly order(poly p);
 
 /*
 	Function that displays the polynomial to the standard output
 	in the traditional mathematical form
 */
-void display(Polynomial p);
+void display(poly p);
 
 #endif
