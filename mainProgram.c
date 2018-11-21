@@ -25,14 +25,13 @@ double inputTerm();
  * The main 
 */
 int main(){
-
-
-
-
-
-
-
-	
+	unsigned int size;
+	printf("\n\n Enter the total number of terms in the polynomial:");
+	scanf("%u",&size);
+	poly polynomialList[size];
+	poly *p;
+	p=polynomialList;
+	createPoly(size,*p);
 }
 
 
