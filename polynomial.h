@@ -17,7 +17,7 @@
 #define POLYNOMIAL_H
 
 /* Declare structure for polynomial */
-struct polynomial
+struct term
 {
     double coefficient;
     double exponent;
