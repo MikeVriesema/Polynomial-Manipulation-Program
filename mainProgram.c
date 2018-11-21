@@ -19,8 +19,7 @@
 #include "polynomial.h"
 
 //FUNCTION DECLARATIONS:
-int readOrder();
-double readCoeff();
+double inputTerm();
 
 /*
  * The main 
@@ -36,27 +35,15 @@ int main(){
 	
 }
 
-/*
- * readOrder
- * Reads user input expecting an int
- * Used for taking in the order of the polynomials
- * Return: int - value(user inputted value)
- * Parameter: void
-*/
-int readOrder(){
-   int value;
-   scanf("%d",&value);
-   return value;
-}
 
 /*
- * readCoeff
+ * inputTerm
  * Reads user input expecting an double
- * Used for coeeficients in polynomials
+ * Used for coefficients/exponents in polynomials
  * Return: double - value(user inputted value)
  * Parameter: void
 */
-double readCoeff(){
+double inputTerm(){
    double value;
    scanf("%lf",&value);
    return value;
