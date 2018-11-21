@@ -24,18 +24,31 @@
 	the user, constructs a polynomial (linked list of terms)
 	and returns a pointer to the first (head) term.
 */
-poly create(){}
+poly create(){
+/*
+	unsigned int size;
+	printf("\n\n Enter the total number of terms in the polynomial:");
+	scanf("%u",&size);
+	poly p;
+	for(int i=0;i<size;i++)
+	{
+		printf("Enter the Coefficient(%lf):");
+		scanf("%lf",p.coeff);
+		printf("Enter the exponent(%lf):");
+		scanf("%lf",p.exp);        
+	}*/
+}
 
 /*
 	Function that takes in a polynomial and deletes it
 */
-void delete(poly){}
+void deletePoly(poly p){}
 
 /*
 	Function that takes two polynomials, constructs and returns 
 	a new polynomial that is the result of adding polynomials p1 and p2
 */
-poly add(poly p1, poly p2){
+poly addPoly(poly p1, poly p2){
 
 }
 
@@ -43,7 +56,7 @@ poly add(poly p1, poly p2){
 	Function that takes two polynomials, constructs and returns 
 	a new polynomial that is the result of subtracting polynomial p2 from p
 */
-poly subtract(poly p1, poly p2){
+poly subtractPoly(poly p1, poly p2){
 
 }
 
@@ -51,7 +64,7 @@ poly subtract(poly p1, poly p2){
 	Function that takes a polynomial, constructs and returns 
 	a new polynomial that is the result of multiplying polynomial p and double value
 */
-poly multiply(poly p, double value){
+poly multiplyPoly(poly p, double value){
 
 }
 
@@ -59,7 +72,7 @@ poly multiply(poly p, double value){
 	Function that takes a polynomial, constructs and returns 
 	a new polynomial that is the result of dividing polynomial p and double value
 */
-poly divide(poly p, double value){
+poly dividePoly(poly p, double value){
 
 }
 
@@ -67,7 +80,7 @@ poly divide(poly p, double value){
 	Function that normalises the polynomial adjusting the coefficients so that
     the coefficient of the highest order is 1
 */
-poly normalise(poly p){
+poly normalisePoly(poly p){
 
 }
 
@@ -75,7 +88,7 @@ poly normalise(poly p){
 	Function that displays the highest order of the polynomial
     returning the highest power and the coefficient
 */
-poly order(poly p){
+poly orderPoly(poly p){
 
 }
 
