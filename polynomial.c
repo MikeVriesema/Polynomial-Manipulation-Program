@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "polynomial.h"
-
+#include "linkedlist.h"
 
 
 /*
@@ -25,31 +25,24 @@
 	and returns a pointer to the first (head) term.
 */
 poly create(){
-/*
-	unsigned int size;
-	printf("\n\n Enter the total number of terms in the polynomial:");
-	scanf("%u",&size);
 	poly p;
-	for(int i=0;i<size;i++)
-	{
-		printf("Enter the Coefficient(%lf):");
-		scanf("%lf",p.coeff);
-		printf("Enter the exponent(%lf):");
-		scanf("%lf",p.exp);        
-	}*/
+	return p;
 }
 
 /*
 	Function that takes in a polynomial and deletes it
 */
-void deletePoly(poly p){}
+void deletePoly(poly p){
+	printf("Poly deleted");
+}
 
 /*
 	Function that takes two polynomials, constructs and returns 
 	a new polynomial that is the result of adding polynomials p1 and p2
 */
 poly addPoly(poly p1, poly p2){
-
+	poly p;
+	return p;
 }
 
 /*
@@ -57,7 +50,8 @@ poly addPoly(poly p1, poly p2){
 	a new polynomial that is the result of subtracting polynomial p2 from p
 */
 poly subtractPoly(poly p1, poly p2){
-
+	poly p;
+	return p;
 }
 
 /*
@@ -65,7 +59,8 @@ poly subtractPoly(poly p1, poly p2){
 	a new polynomial that is the result of multiplying polynomial p and double value
 */
 poly multiplyPoly(poly p, double value){
-
+	poly p;
+	return p;
 }
 
 /*
@@ -73,7 +68,8 @@ poly multiplyPoly(poly p, double value){
 	a new polynomial that is the result of dividing polynomial p and double value
 */
 poly dividePoly(poly p, double value){
-
+	poly p;
+	return p;
 }
 
 /*
@@ -81,7 +77,8 @@ poly dividePoly(poly p, double value){
     the coefficient of the highest order is 1
 */
 poly normalisePoly(poly p){
-
+	poly p;
+	return p;
 }
 
 /*
@@ -89,7 +86,8 @@ poly normalisePoly(poly p){
     returning the highest power and the coefficient
 */
 poly orderPoly(poly p){
-
+	poly p;
+	return p;
 }
 
 /*
@@ -97,5 +95,6 @@ poly orderPoly(poly p){
 	in the traditional mathematical form
 */
 void display(poly p){
-
+	poly p;
+	return p;
 }
