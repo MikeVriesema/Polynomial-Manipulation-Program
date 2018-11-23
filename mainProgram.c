@@ -17,7 +17,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "polynomial.h"
-#include "linkedlist.h"
 
 //FUNCTION DECLARATIONS:
 double inputTerm();
@@ -27,8 +26,8 @@ double inputTerm();
 */
 int main() 
 {
-  llist *mylist=NULL;
-  poly newdata;
+  polynomial *mylist=NULL;
+  term newdata;
   int choice=-1;
   
   while (choice != 0) {
@@ -44,6 +43,7 @@ int main()
     printf("\t(8) Delete entire list\n");
     printf("\nPlease select 0-7:");
     scanf("%d",&choice);
+    //MUST RUN ALL AS DRIVER NOT AS MENU
     
     switch (choice) {
       
@@ -117,7 +117,7 @@ int main()
 	  printf("Head\n");
 	} else {
 	  // otherwise print all data elements
-	  poly *d = accessData(mylist);
+	  term *d = accessData(mylist);
 	  printf("%lf x^ %lf", 
 		 d->coefficient, d->exponent);
 	}
@@ -137,7 +137,7 @@ int main()
 	    printf("\nHead\n");
 	  } else {
 	    printf("Node #%d\n", ++counter);
-	    poly *d = accessData(mylist);
+	    term *d = accessData(mylist);
 	    printf("\t%lf x^ %lf", 
 		   d->coefficient, d->exponent);
 	  }
