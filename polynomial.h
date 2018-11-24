@@ -67,7 +67,7 @@ polynomial subtractPoly(polynomial p1, polynomial p2);
 polynomial *multiplyPoly(polynomial *p, double value);
 polynomial *dividePoly(polynomial *p, double value);
 polynomial normalisePoly(polynomial p);
-polynomial orderPoly(polynomial p);
+void orderPoly(polynomial *p);
 void displayPoly(polynomial *mylist);
 
 term *accessData(polynomial *poly);

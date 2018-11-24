@@ -40,7 +40,7 @@ int main()
     printf("\t(5) Multiply polynomial\n");
     printf("\t(6) Divide polynomial\n");
     printf("\t(7) Normalise polynomial\n");
-    printf("\t(8) Return order of polynomial\n");
+    printf("\t(8) Return order of polynomial\n"); //FUNCTIONAL (NEEDS REVERSE THO)
     printf("\t(9) Display polynomial\n"); //FUNCTIONAL
     printf("\nPlease select 0-9:");
     scanf("%d", &choice);
@@ -109,11 +109,7 @@ int main()
       break;
 
     case 8: //RETURN ORDER OF POLYNOMIAL
-      if (mylist != NULL){
-        //orderPoly();
-      }else{
-        printf("You must create a linked list first ...\n");
-      }
+        orderPoly(mylist);
       break;
 
     case 9: // DISPLAY POLYNOMIAL

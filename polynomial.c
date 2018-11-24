@@ -250,7 +250,16 @@ polynomial normalisePoly(polynomial p){
 	Function that displays the highest order of the polynomial
     returning the highest power and the coefficient
 */
-polynomial orderPoly(polynomial p){
+void orderPoly(polynomial *p){
+  if (p != NULL){
+  gotoHead(p);
+  if(gotoNextNode(p) ==ok){
+  term *d = accessData(p);
+  printf("\nOrder of polynomial: %d\n",d->exponent);
+  }else{
+    printf("You must create a linked list first ...\n");
+  }
+  }
 }
 
 /*
