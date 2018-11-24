@@ -43,7 +43,7 @@ polynomial *createPoly()
       // that head points to tail (NULL) and current is head
       list->head->successor = NULL;
       list->current = list->head;
-      for(int i=0;i<exponent+1;i++){
+      for(int i=exponent;i>=0;i--){
         insertAfter(list,i);
 
       }
@@ -103,8 +103,6 @@ polyError insertAfter(polynomial *poly,int exponent)
   polyError returnvalue = ok;
   polyNode *newnode;
   term newdata;
-  printf("\nEnter sign: + OR - :");
-  scanf(" %c", &newdata.sign);
   printf("\nplease enter Coefficient: ");
 	scanf("%lf",&newdata.coefficient);
   newdata.exponent = exponent;
@@ -269,13 +267,23 @@ void displayPoly(polynomial *mylist){
             printf("\nPolynomial = ");
           }else{
             term *d = accessData(mylist);
+            if(d->coefficient >0){
               if(d->exponent==1){
-                printf("%c%.0lfX ",d->sign, d->coefficient);
+                printf("+%.0lfX ", d->coefficient);
               } else if(d->exponent==0){
-                printf("%c%.0lf ",d->sign, d->coefficient);
+                printf("+%.0lf ", d->coefficient);
               }else{
-              printf("%c%.0lfX^%d ",d->sign, d->coefficient, d->exponent);
+              printf("+%.0lfX^%d ", d->coefficient, d->exponent);
               }
+            }else{
+              if(d->exponent==1){
+                printf("%.0lfX ", d->coefficient);
+              } else if(d->exponent==0){
+                printf("%.0lf ", d->coefficient);
+              }else{
+              printf("%.0lfX^%d ", d->coefficient, d->exponent);
+              }
+            }
           }
           // goto next node in list
         } while (gotoNextNode(mylist) == ok);

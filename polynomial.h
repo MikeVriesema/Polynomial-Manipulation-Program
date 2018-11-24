@@ -21,7 +21,6 @@ typedef enum {ok, illegalNode, noMemory} polyError;
 
 // DEFINE STRUCTURE FOR TERM (ELEMENT OF POLYNOMIAL)
 typedef struct {
-  char sign;
   double coefficient;
   int exponent;
 } term;
