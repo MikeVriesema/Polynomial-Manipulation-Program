@@ -196,7 +196,23 @@ polyError gotoNextNode(polynomial *poly){
 //         otherwise, data of current node
 ///////////////////////////////////////////////////////
 term *accessData(polynomial *poly)
-{
+{polynomial addPoly(polynomial *p1, polynomial *p2){
+
+    //this is to go through each part of the first poly
+ 	gotoHead(p1);
+    gotoHead(p2);
+    term *a = accessData(p1);
+    term *b = accessData(p2);
+    
+    while(gotoNextNode(p1)==ok && gotoNextNode(p2)==ok ){
+		a->coefficient=((a->coefficient)+(b->coefficient));
+      
+		gotonextnode(p1);
+        gotonextnode(p2);
+    }
+
+    return *p1;
+}
   // is current head or tail?
   if (poly->current != poly->head && poly->current != NULL) {
     // no, return data
@@ -212,7 +228,22 @@ term *accessData(polynomial *poly)
 	Function that takes two polynomials, constructs and returns 
 	a new polynomial that is the result of adding polynomials p1 and p2
 */
-polynomial addPoly(polynomial p1, polynomial p2){
+polynomial addPoly(polynomial *p1, polynomial *p2){
+	//Goes to head of list
+	gotoHead(p1);
+	gotoHead(p2);
+	//calls accessData for both p1 & p2
+    	term *a = accessData(p1);
+    	term *b = accessData(p2);
+	//while goToNextNode for p1 & p2 returns ok, do the addition
+    	while(gotoNextNode(p1)==ok && gotoNextNode(p2)==ok ){
+		a->coefficient=((a->coefficient)+(b->coefficient));
+      
+		gotoNextnode(p1);
+		gotoNextnode(p2);
+    	}
+
+    return *p1;
 }
 
 /*
