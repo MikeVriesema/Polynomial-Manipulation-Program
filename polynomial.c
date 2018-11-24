@@ -27,8 +27,11 @@
 // parameter: none
 // return: pointer to list if success
 //         pointer to NULL on failure
-polynomial *listCreate() 
+polynomial *createPoly() 
 {
+  int exponent;
+  printf("\nPlease enter degree of polynomial:");
+  scanf("%d",&exponent);
   polynomial *list;
   list = (polynomial *) malloc(sizeof(polynomial));
   // check for allocation success
@@ -40,6 +43,10 @@ polynomial *listCreate()
       // that head points to tail (NULL) and current is head
       list->head->successor = NULL;
       list->current = list->head;
+      for(int i=0;i<exponent+1;i++){
+        insertAfter(list,i);
+
+      }
     } else {
       // need to de-allocate list and set it to NULL
       free(list);
@@ -59,25 +66,25 @@ polynomial *listCreate()
 // parameter:	head - head of a valid list
 // return:		void
 ///////////////////////////////////////////////////////
-void listDelete(polynomial *list) 
+void deletePoly(polynomial *poly) 
 {
   polyNode *next;
   
   // delete all nodes until list is empty
   // start at beginning of list
-  list->current = list->head;
+  poly->current = poly->head;
   // iterate through all nodes in list and delete them
-  while (list->head->successor != NULL) {
-    next = list->head->successor;
-    list->head->successor = list->head->successor->successor;
+  while (poly->head->successor != NULL) {
+    next = poly->head->successor;
+    poly->head->successor = poly->head->successor->successor;
     free(next);
   }
   // while loop can be achieved in a single line - any ideas?  
     
   // now list is empty, only need to delete head 
   // and list itself
-  free(list->head);
-  free(list);
+  free(poly->head);
+  free(poly);
 }
 
 ///////////////////////////////////////////////////////
@@ -91,10 +98,16 @@ void listDelete(polynomial *list)
 // return: ok - insertion successful
 //         noMemory - no memory available to create newnode
 ///////////////////////////////////////////////////////
-polyError insertAfter(term *d, polynomial *list) 
+polyError insertAfter(polynomial *poly,int exponent) 
 {
   polyError returnvalue = ok;
   polyNode *newnode;
+  term newdata;
+  printf("\nEnter sign: + OR - :");
+  scanf(" %c", &newdata.sign);
+  printf("\nplease enter Coefficient: ");
+	scanf("%lf",&newdata.coefficient);
+  newdata.exponent = exponent;
   
   // create new node
   newnode = (polyNode *) malloc(sizeof(polyNode));
@@ -105,12 +118,12 @@ polyError insertAfter(term *d, polynomial *list)
   } else {
     // allocation successful
     // associate data d with newnode
-    newnode->d = *d;
+    newnode->d = newdata;
     // link newnode into linked list
     // 1. set succcessor of newnode to current nodes's successor
-    newnode->successor = list->current->successor;
+    newnode->successor = poly->current->successor;
     // 2. set successor of current node to newnode
-    list->current->successor = newnode;
+    poly->current->successor = newnode;
   }
   return returnvalue;
 }
@@ -150,10 +163,10 @@ polyError deleteNext(polynomial *list)
 // parameter: list - list to be reset
 // return: void
 ///////////////////////////////////////////////////////
-void gotoHead(polynomial *list) 
+void gotoHead(polynomial *poly) 
 {
   // reset curren to head
-  list->current = list->head;
+  poly->current = poly->head;
 }
 
 ///////////////////////////////////////////////////////
@@ -164,15 +177,15 @@ void gotoHead(polynomial *list)
 // return: ok - current has been set to successor
 //         illegalNode - successor of current it tail
 ///////////////////////////////////////////////////////
-polyError gotoNextNode(polynomial *list)
+polyError gotoNextNode(polynomial *poly)
 {
   polyError result = ok;
   // is successor of current tail?
-  if (list->current->successor != NULL) {
+  if (poly->current->successor != NULL) {
     // no -> move forward
-    list->current = list->current->successor;
+    poly->current = poly->current->successor;
   } else {
-    // reached end of list, cannot move any further
+    // reached end of poly, cannot move any further
     result = illegalNode;
   }
   return result;
@@ -186,42 +199,24 @@ polyError gotoNextNode(polynomial *list)
 // return: if current is head or tail: NULL
 //         otherwise, data of current node
 ///////////////////////////////////////////////////////
-term *accessData(polynomial *list) 
+term *accessData(polynomial *poly)
 {
   // is current head or tail?
-  if (list->current != list->head && list->current != NULL) {
+  if (poly->current != poly->head && poly->current != NULL) {
     // no, return data
-    return &(list->current->d);
+    return &(poly->current->d);
   } else {
     // yes, return NULL
     return NULL;
   }
 } 
 
-/*
-	Function that obtains required data for a polynomial from
-	the user, constructs a polynomial (linked list of terms)
-	and returns a pointer to the first (head) term.
-*/
-polynomial create(){
-	polynomial p;
-	return p;
-}
-
-/*
-	Function that takes in a polynomial and deletes it
-*/
-void deletePoly(polynomial p){
-	printf("Poly deleted");
-}
 
 /*
 	Function that takes two polynomials, constructs and returns 
 	a new polynomial that is the result of adding polynomials p1 and p2
 */
 polynomial addPoly(polynomial p1, polynomial p2){
-	polynomial p;
-	return p;
 }
 
 /*
@@ -229,26 +224,21 @@ polynomial addPoly(polynomial p1, polynomial p2){
 	a new polynomial that is the result of subtracting polynomial p2 from p
 */
 polynomial subtractPoly(polynomial p1, polynomial p2){
-	polynomial p;
-	return p;
 }
 
 /*
 	Function that takes a polynomial, constructs and returns 
 	a new polynomial that is the result of multiplying polynomial p and double value
 */
-polynomial multiplyPoly(polynomial p, double value){
-	polynomial p;
-	return p;
+polynomial *multiplyPoly(polynomial *p, double value){
+
 }
 
 /*
 	Function that takes a polynomial, constructs and returns 
 	a new polynomial that is the result of dividing polynomial p and double value
 */
-polynomial dividePoly(polynomial p, double value){
-	polynomial p;
-	return p;
+polynomial *dividePoly(polynomial *p, double value){
 }
 
 /*
@@ -256,8 +246,6 @@ polynomial dividePoly(polynomial p, double value){
     the coefficient of the highest order is 1
 */
 polynomial normalisePoly(polynomial p){
-	polynomial p;
-	return p;
 }
 
 /*
@@ -265,15 +253,34 @@ polynomial normalisePoly(polynomial p){
     returning the highest power and the coefficient
 */
 polynomial orderPoly(polynomial p){
-	polynomial p;
-	return p;
 }
 
 /*
 	Function that displays the polynomial to the standard output
 	in the traditional mathematical form
 */
-void display(polynomial p){
-	polynomial p;
-	return p;
+void displayPoly(polynomial *mylist){
+  if (mylist != NULL){
+        // start at head
+        gotoHead(mylist);
+        do{
+          // print current node
+          if (mylist->current == mylist->head){
+            printf("\nPolynomial = ");
+          }else{
+            term *d = accessData(mylist);
+              if(d->exponent==1){
+                printf("%c%.0lfX ",d->sign, d->coefficient);
+              } else if(d->exponent==0){
+                printf("%c%.0lf ",d->sign, d->coefficient);
+              }else{
+              printf("%c%.0lfX^%d ",d->sign, d->coefficient, d->exponent);
+              }
+          }
+          // goto next node in list
+        } while (gotoNextNode(mylist) == ok);
+        printf("\n\n");
+      }else{
+        printf("You must create a linked list first ...\n");
+      }
 }

@@ -21,8 +21,9 @@ typedef enum {ok, illegalNode, noMemory} polyError;
 
 // DEFINE STRUCTURE FOR TERM (ELEMENT OF POLYNOMIAL)
 typedef struct {
+  char sign;
   double coefficient;
-  double exponent;
+  int exponent;
 } term;
 // DEFINE STRUCTURE FOR A NODE OF POLYNOMIAL
 typedef struct n {
@@ -62,16 +63,16 @@ typedef struct {
 polynomial *createPoly();
 void deletePoly(polynomial *poly);
 
-poly addPoly(poly p1, poly p2);
-poly subtractPoly(poly p1, poly p2);
-poly multiplyPoly(poly p, double value);
-poly dividePoly(poly p, double value);
-poly normalisePoly(poly p);
-poly orderPoly(poly p);
-void display(poly p);
+polynomial addPoly(polynomial p1, polynomial p2);
+polynomial subtractPoly(polynomial p1, polynomial p2);
+polynomial *multiplyPoly(polynomial *p, double value);
+polynomial *dividePoly(polynomial *p, double value);
+polynomial normalisePoly(polynomial p);
+polynomial orderPoly(polynomial p);
+void displayPoly(polynomial *mylist);
 
-poly *accessData(polynomial *poly);
-polyError insertAfter(poly *d, polynomial *poly);
+term *accessData(polynomial *poly);
+polyError insertAfter(polynomial *poly,int exponent);
 polyError deleteNext(polynomial *poly);
 void gotoHead(polynomial *poly);
 polyError gotoNextNode(polynomial *poly);
