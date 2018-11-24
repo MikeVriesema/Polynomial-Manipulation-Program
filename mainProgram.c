@@ -27,7 +27,9 @@
 int main()
 {
   polynomial *mylist = NULL;
-  polynomial *list2 =NULL;
+  polynomial *list2 = NULL;
+  printf("MAKE SECOND POLYNOMIAL FOR USE IN ADD SUBTRACT");
+  list2 = createPoly();
   int choice = -1;
 
   while (choice != 0)

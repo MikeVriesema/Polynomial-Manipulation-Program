@@ -43,9 +43,8 @@ polynomial *createPoly()
       // that head points to tail (NULL) and current is head
       list->head->successor = NULL;
       list->current = list->head;
-      for(int i=exponent;i>=0;i--){
-        insertAfter(list,i);
-
+      for(int i=0;i<exponent+1;i++){
+            insertAfter(list,i);
       }
     } else {
       // need to de-allocate list and set it to NULL
@@ -175,11 +174,10 @@ void gotoHead(polynomial *poly)
 // return: ok - current has been set to successor
 //         illegalNode - successor of current it tail
 ///////////////////////////////////////////////////////
-polyError gotoNextNode(polynomial *poly)
-{
+polyError gotoNextNode(polynomial *poly){
   polyError result = ok;
   // is successor of current tail?
-  if (poly->current->successor != NULL) {
+  if (poly->current->successor != NULL){
     // no -> move forward
     poly->current = poly->current->successor;
   } else {
