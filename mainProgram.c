@@ -27,6 +27,7 @@
 int main()
 {
   polynomial *mylist = NULL;
+  polynomial *list2 =NULL;
   int choice = -1;
 
   while (choice != 0)
@@ -70,7 +71,7 @@ int main()
 
     case 3: //ADD POLYNOMIALS
       if (mylist != NULL){
-        //addPoly(mylist,poly2);
+        //addPoly(mylist,list2);
       }else{
         printf("You must create a linked list first ...\n");
       }
@@ -78,7 +79,7 @@ int main()
 
     case 4: //SUBTRACT POLYNOMIALS
       if (mylist != NULL){
-        //subtractPoly();
+        //subtractPoly(mylist,list2);
       }else{
         printf("You must create a linked list first ...\n");
       }
@@ -86,7 +87,7 @@ int main()
 
     case 5: //MULTIPLY POLYNOMIALS
       if (mylist != NULL){
-        //multiplyPoly();
+        //multiplyPoly(mylist,double);
       }else{
         printf("You must create a linked list first ...\n");
       }
@@ -94,7 +95,7 @@ int main()
 
     case 6: //DIVIDE POLYNOMIALS
       if (mylist != NULL){
-        //dividePoly();
+        //dividePoly(mylist,double);
       }else{
         printf("You must create a linked list first ...\n");
       }
