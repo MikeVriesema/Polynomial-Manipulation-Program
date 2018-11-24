@@ -5,15 +5,15 @@
  * Modular Program that uses ADT to carry out various functions on 
  * polynomial values
  * 
- * Authors: Mike Vriesema 17212359 
+ * Authors: 
+ *      Mike Vriesema 17212359 
  * 			Luke O'Sullivan Griffin 17184614 
  * 			Ryan O'Connor 17209382 
  * 			Conall McAteer 18173586 
  * 			Gearoid Kirwan 17213266
  * 
  * Date Last Modified: 22.11.2018
- */
-//////////////////////////////////////////////////////////////////////
+ *///////////////////////////////////////////////////////////////////////
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -26,102 +26,31 @@
 */
 int main()
 {
-  polynomial *mylist = NULL;
-  polynomial *list2 = NULL;
-  printf("MAKE SECOND POLYNOMIAL FOR USE IN ADD SUBTRACT");
-  list2 = createPoly();
-  int choice = -1;
+  polynomial *poly1 = NULL;
+  polynomial *poly2 = NULL;
 
-  while (choice != 0)
-  {
-    // provide menu for different operations:
-    printf("\t(0) Exit Program\n");          //FUNCTIONAL
-    printf("\t(1) Create new polynomial\n"); //FUNCTIONAL
-    printf("\t(2) Delete polynomial\n");     //FUNCTIONAL
-    printf("\t(3) Add polynomial\n");
-    printf("\t(4) Subtract polynomial\n");
-    printf("\t(5) Multiply polynomial\n");
-    printf("\t(6) Divide polynomial\n");
-    printf("\t(7) Normalise polynomial\n");
-    printf("\t(8) Return order of polynomial\n"); //FUNCTIONAL (NEEDS REVERSE THO)
-    printf("\t(9) Display polynomial\n"); //FUNCTIONAL
-    printf("\nPlease select 0-9:");
-    scanf("%d", &choice);
-    //MUST RUN ALL AS DRIVER NOT AS MENU
+  // Provide tests for all operations
+  
+  printf("\tCreate new polynomials\n");     //FUNCTIONAL
+  poly1 = createPoly();
+  poly2 = createPoly();
+  printf("\tAdd polynomial\n");
+  //addPoly(poly1,poly2);
+  printf("\tSubtract polynomial\n");
+  //subtractPoly(poly1,poly2);
+  printf("\tMultiply polynomial\n");
+  //multiplyPoly(poly1);           //READ DOUBLE IN METHOD//HAVE REMOVED IT AS PASSED IN PARAMTER
+  printf("\tDivide polynomial\n");
+  //dividePoly(poly1,double);       //READ DOUBLE IN METHOD//HAVE REMOVED IT AS PASSED IN PARAMTER
+  printf("\tNormalise polynomial\n");
+  //normalisePoly();
+  printf("\tReturn order of polynomial\n"); //FUNCTIONAL
+  orderPoly(poly1);
+  printf("\tDelete polynomial\n");          //FUNCTIONAL
+  deletePoly(poly1);
+  printf("\tDisplay polynomial\n");         //FUNCTIONAL
+  displayPoly(poly1);
+  printf("\tExit Program\n");               //FUNCTIONAL
 
-    switch (choice)
-    {
-    case 0: // Exit Program
-      break;
-
-    case 1: //CREATE POLYNOMIAL
-      if (mylist != NULL){ //CURRENTLY LOCKS POLY CREATION TO 1
-        printf("Polynomial already in use,cannot create a new polynomial ...\n");
-      }else{
-        mylist = createPoly();
-      }
-      break;
-
-    case 2: //DELETE POLYNOMIAL
-      if (mylist != NULL){
-        deletePoly(mylist);
-        mylist = NULL;
-      }else{
-        printf("You must create a linked list first ...\n");
-      }
-      break;
-
-    case 3: //ADD POLYNOMIALS
-      if (mylist != NULL){
-        //addPoly(mylist,list2);
-      }else{
-        printf("You must create a linked list first ...\n");
-      }
-      break;
-
-    case 4: //SUBTRACT POLYNOMIALS
-      if (mylist != NULL){
-        //subtractPoly(mylist,list2);
-      }else{
-        printf("You must create a linked list first ...\n");
-      }
-      break;
-
-    case 5: //MULTIPLY POLYNOMIALS
-      if (mylist != NULL){
-        //multiplyPoly(mylist,double);
-      }else{
-        printf("You must create a linked list first ...\n");
-      }
-      break;
-
-    case 6: //DIVIDE POLYNOMIALS
-      if (mylist != NULL){
-        //dividePoly(mylist,double);
-      }else{
-        printf("You must create a linked list first ...\n");
-      }
-      break;
-
-    case 7: //NORMALISE POLYNOMIAL
-      if (mylist != NULL){
-        //normalisePoly();
-      }else{
-        printf("You must create a linked list first ...\n");
-      }
-      break;
-
-    case 8: //RETURN ORDER OF POLYNOMIAL
-        orderPoly(mylist);
-      break;
-
-    case 9: // DISPLAY POLYNOMIAL
-        displayPoly(mylist);
-      break;
-
-    default:
-      printf("Invalid choice, please select again\n");
-    }
-  }
   return EXIT_SUCCESS;
 }
