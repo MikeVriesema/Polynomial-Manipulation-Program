@@ -253,7 +253,6 @@ polynomial *addPoly(polynomial *p1, polynomial *p2){
 
             printf("\n%0.lf ", answer);
         }
-        displayPoly(p1);
     }else{
       printf("No polynomial found.");
     }
@@ -278,10 +277,9 @@ polynomial *subtractPoly(polynomial *p1, polynomial *p2){
             double aCoeff = a->coefficient;
             double bCoeff = b->coefficient;
             double answer = aCoeff - bCoeff;
-
             printf("\n%0.lf ", answer);
         }
-        displayPoly(p1);
+
     }else{
       printf("No polynomial found.");
     }
@@ -294,8 +292,8 @@ polynomial *subtractPoly(polynomial *p1, polynomial *p2){
 */
 polynomial *multiplyPoly(polynomial *p)
 {
-   gotoHead(p);
-  double value = 2;
+  gotoHead(p);
+  double value = 4;
 
   if(p != NULL){
     while(gotoNextNode(p) == ok){
@@ -304,7 +302,11 @@ polynomial *multiplyPoly(polynomial *p)
       double multiplyResult = (polyTerm->coefficient) ;
       multiplyResult = multiplyResult * value;
       printf("New Coeff = %0.lf \n",multiplyResult);
+
+      polyTerm->coefficient = multiplyResult;
     }
+    printf("New Polynomial: ");
+    displayPoly(p);
   }else{
     printf("Create a polynomial");
   }
@@ -316,7 +318,7 @@ polynomial *multiplyPoly(polynomial *p)
 	Function that takes a polynomial, constructs and returns 
 	a new polynomial that is the result of dividing polynomial p and double value
 */
-  polynomial *dividePoly(polynomial *p)
+polynomial *dividePoly(polynomial *p)
 {
   gotoHead(p);
   double value = 2;
@@ -327,7 +329,11 @@ polynomial *multiplyPoly(polynomial *p)
       double divideResult = (polyTerm->coefficient) ;
       divideResult = divideResult / value;
       printf("New Coeff = %0.lf \n",divideResult);
-    }
+      polyTerm->coefficient = divideResult;
+      
+    }   
+    printf("New Polynomial: "); 
+    displayPoly(p);
   }else{
     printf("Create a polynomial");
   } 
