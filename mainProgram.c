@@ -31,26 +31,27 @@ int main()
 
   // Provide tests for all operations
   
-  printf("\tCreate new polynomials\n");     //FUNCTIONAL
+  printf("\nCreate new polynomials:\nInput values for 1st Polynomial:");     
   poly1 = createPoly();
+  printf("\nInput values for 2nd Polynomial:");
   poly2 = createPoly();
-  printf("\tAdd polynomial\n");
-  //addPoly(poly1,poly2);
-  printf("\tSubtract polynomial\n");
-  //subtractPoly(poly1,poly2);
-  printf("\tMultiply polynomial\n");
-  //multiplyPoly(poly1);           //READ DOUBLE IN METHOD//HAVE REMOVED IT AS PASSED IN PARAMTER
-  printf("\tDivide polynomial\n");
-  //dividePoly(poly1,double);       //READ DOUBLE IN METHOD//HAVE REMOVED IT AS PASSED IN PARAMTER
-  printf("\tNormalise polynomial\n");
+  printf("\nAdd polynomial:\n");
+  addPoly(poly1,poly2);
+  printf("\nSubtract polynomial:\n");
+  subtractPoly(poly1,poly2);
+  printf("\nMultiply polynomial:\n");
+  multiplyPoly(poly1);       
+  printf("\nDivide polynomial:\n");
+  dividePoly(poly1);      
+  printf("\nNormalise polynomial:\n");
   //normalisePoly();
-  printf("\tReturn order of polynomial\n"); //FUNCTIONAL
+  printf("\nReturn order of polynomial:\n"); 
   orderPoly(poly1);
-  printf("\tDelete polynomial\n");          //FUNCTIONAL
+  printf("\nDelete polynomial:\n");         
   deletePoly(poly1);
-  printf("\tDisplay polynomial\n");         //FUNCTIONAL
+  printf("\nDisplay polynomial:\n");       
   displayPoly(poly1);
-  printf("\tExit Program\n");               //FUNCTIONAL
+  printf("\nExit Program\n");               
 
   return EXIT_SUCCESS;
 }

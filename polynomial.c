@@ -91,6 +91,7 @@ void deletePoly(polynomial *poly)
     // and list itself
     free(poly->head);
     free(poly);
+    printf("Polynomial Deleted!\n");
   }
   else
   {
@@ -114,7 +115,7 @@ polyError insertAfter(polynomial *poly, int exponent)
   polyError returnvalue = ok;
   polyNode *newnode;
   term newdata;
-  printf("\nplease enter Coefficient: ");
+  printf("Please enter Coefficient: ");
   scanf("%lf", &newdata.coefficient);
   newdata.exponent = exponent;
 
@@ -241,7 +242,7 @@ polynomial *addPoly(polynomial *p1, polynomial *p2){
     {
         gotoHead(p1);
         gotoHead(p2);
-
+        printf("Adding polynomial 1 and polynomial 2:");
         while (gotoNextNode(p1) == ok && gotoNextNode(p2) == ok)
         {
             term *a = accessData(p1);
@@ -250,10 +251,12 @@ polynomial *addPoly(polynomial *p1, polynomial *p2){
             double bCoeff = b->coefficient;
             double answer = aCoeff + bCoeff;
 
-            printf("%lf", answer);
+            printf("\n%0.lf ", answer);
         }
+        displayPoly(p1);
+    }else{
+      printf("No polynomial found.");
     }
-    displayPoly(p1);
     return p1;
 }
 
@@ -267,7 +270,7 @@ polynomial *subtractPoly(polynomial *p1, polynomial *p2){
     {
         gotoHead(p1);
         gotoHead(p2);
-
+        printf("Subtracting polynomial 1 and polynomial 2");
         while (gotoNextNode(p1) == ok && gotoNextNode(p2) == ok)
         {
             term *a = accessData(p1);
@@ -276,10 +279,12 @@ polynomial *subtractPoly(polynomial *p1, polynomial *p2){
             double bCoeff = b->coefficient;
             double answer = aCoeff - bCoeff;
 
-            printf("%lf", answer);
+            printf("\n%0.lf ", answer);
         }
+        displayPoly(p1);
+    }else{
+      printf("No polynomial found.");
     }
-    displayPoly(p1);
     return p1;
 }
 
@@ -289,7 +294,21 @@ polynomial *subtractPoly(polynomial *p1, polynomial *p2){
 */
 polynomial *multiplyPoly(polynomial *p)
 {
+   gotoHead(p);
+  double value = 2;
 
+  if(p != NULL){
+    while(gotoNextNode(p) == ok){
+      
+      term *polyTerm = accessData(p);
+      double multiplyResult = (polyTerm->coefficient) ;
+      multiplyResult = multiplyResult * value;
+      printf("New Coeff = %0.lf \n",multiplyResult);
+    }
+  }else{
+    printf("Create a polynomial");
+  }
+  return p; 
 }
   
 
@@ -299,22 +318,20 @@ polynomial *multiplyPoly(polynomial *p)
 */
   polynomial *dividePoly(polynomial *p)
 {
-  //READ IN DOUBLE USING SCANF TO MULTIPLY/DIVIDE BY
   gotoHead(p);
   double value = 2;
 
   if(p != NULL){
     while(gotoNextNode(p) == ok){
-      
       term *polyTerm = accessData(p);
       double divideResult = (polyTerm->coefficient) ;
       divideResult = divideResult / value;
       printf("New Coeff = %0.lf \n",divideResult);
     }
-    return p;
   }else{
     printf("Create a polynomial");
   } 
+  return p;
 }
 
 /*
@@ -337,7 +354,7 @@ void orderPoly(polynomial *p)
     if (gotoNextNode(p) == ok)
     {
       term *d = accessData(p);
-      printf("\nOrder of polynomial: %d\n", d->exponent);
+      printf("Order of polynomial: %d\n", d->exponent);
     }
     else
     {
@@ -356,50 +373,54 @@ void displayPoly(polynomial *mylist)
   {
     // start at head
     gotoHead(mylist);
-    do
-    {
-      // print current node
-      if (mylist->current == mylist->head)
+    if(mylist->head->successor == NULL){
+      printf("No polynomial found!\n");
+    }else{
+      do
       {
-        printf("\nPolynomial = ");
-      }
-      else
-      {
-        term *d = accessData(mylist);
-        if (d->coefficient > 0)
+        // print current node
+        if (mylist->current == mylist->head)
         {
-          if (d->exponent == 1)
-          {
-            printf("+%.0lfX ", d->coefficient);
-          }
-          else if (d->exponent == 0)
-          {
-            printf("+%.0lf ", d->coefficient);
-          }
-          else
-          {
-            printf("+%.0lfX^%d ", d->coefficient, d->exponent);
-          }
+          printf("\nPolynomial = ");
         }
         else
         {
-          if (d->exponent == 1)
+          term *d = accessData(mylist);
+          if (d->coefficient > 0)
           {
-            printf("%.0lfX ", d->coefficient);
-          }
-          else if (d->exponent == 0)
-          {
-            printf("%.0lf ", d->coefficient);
+            if (d->exponent == 1)
+            {
+              printf("+%.0lfX ", d->coefficient);
+            }
+            else if (d->exponent == 0)
+            {
+              printf("+%.0lf ", d->coefficient);
+            }
+            else
+            {
+              printf("+%.0lfX^%d ", d->coefficient, d->exponent);
+            }
           }
           else
           {
-            printf("%.0lfX^%d ", d->coefficient, d->exponent);
+            if (d->exponent == 1)
+            {
+              printf("%.0lfX ", d->coefficient);
+            }
+            else if (d->exponent == 0)
+            {
+              printf("%.0lf ", d->coefficient);
+            }
+            else
+            {
+              printf("%.0lfX^%d ", d->coefficient, d->exponent);
+            }
           }
         }
-      }
-      // goto next node in list
-    } while (gotoNextNode(mylist) == ok);
-    printf("\n\n");
+        // goto next node in list
+      } while (gotoNextNode(mylist) == ok);
+      printf("\n\n");
+    }
   }
   else
   {
