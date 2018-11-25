@@ -287,7 +287,17 @@ polynomial *subtractPoly(polynomial *p1, polynomial *p2){
 	Function that takes a polynomial, constructs and returns 
 	a new polynomial that is the result of multiplying polynomial p and double value
 */
-polynomial *dividePoly(polynomial *p)
+polynomial *multiplyPoly(polynomial *p)
+{
+
+}
+  
+
+/*
+	Function that takes a polynomial, constructs and returns 
+	a new polynomial that is the result of dividing polynomial p and double value
+*/
+  polynomial *dividePoly(polynomial *p)
 {
   //READ IN DOUBLE USING SCANF TO MULTIPLY/DIVIDE BY
   gotoHead(p);
@@ -299,22 +309,12 @@ polynomial *dividePoly(polynomial *p)
       term *polyTerm = accessData(p);
       double divideResult = (polyTerm->coefficient) ;
       divideResult = divideResult / value;
-      printf("New Coeff = %0.lf \n",divideResult)
+      printf("New Coeff = %0.lf \n",divideResult);
     }
     return p;
   }else{
     printf("Create a polynomial");
   } 
-}
-  
-
-/*
-	Function that takes a polynomial, constructs and returns 
-	a new polynomial that is the result of dividing polynomial p and double value
-*/
-  polynomial *dividePoly(polynomial *p)
-{
-
 }
 
 /*
