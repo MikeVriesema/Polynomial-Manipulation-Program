@@ -236,22 +236,25 @@ term *accessData(polynomial *poly)
 	Function that takes two polynomials, constructs and returns 
 	a new polynomial that is the result of adding polynomials p1 and p2
 */
-polynomial *addPoly(polynomial *p1, polynomial *p2)
-{
-  //Goes to head of list
-  gotoHead(p1);
-  gotoHead(p2);
-  //calls accessData for both p1 & p2
-  term *a = accessData(p1);
-  term *b = accessData(p2);
-  //while goToNextNode for p1 & p2 returns ok, do the addition
-  while (gotoNextNode(p1) == ok && gotoNextNode(p2) == ok)
-  {
-    a->coefficient = ((a->coefficient) + (b->coefficient));
+polynomial *addPoly(polynomial *p1, polynomial *p2){
+  if (p1 != NULL && p2 != NULL)
+    {
+        gotoHead(p1);
+        gotoHead(p2);
 
-  }
+        while (gotoNextNode(p1) == ok && gotoNextNode(p2) == ok)
+        {
+            term *a = accessData(p1);
+            term *b = accessData(p2);
+            double aCoeff = a->coefficient;
+            double bCoeff = b->coefficient;
+            double answer = aCoeff + bCoeff;
 
-  return p1;
+            printf("%lf", answer);
+        }
+    }
+    displayPoly(p1);
+    return p1;
 }
 
 
@@ -259,8 +262,25 @@ polynomial *addPoly(polynomial *p1, polynomial *p2)
 	Function that takes two polynomials, constructs and returns 
 	a new polynomial that is the result of subtracting polynomial p2 from p
 */
-polynomial *subtractPoly(polynomial *p1, polynomial *p2)
-{
+polynomial *subtractPoly(polynomial *p1, polynomial *p2){
+    if (p1 != NULL && p2 != NULL)
+    {
+        gotoHead(p1);
+        gotoHead(p2);
+
+        while (gotoNextNode(p1) == ok && gotoNextNode(p2) == ok)
+        {
+            term *a = accessData(p1);
+            term *b = accessData(p2);
+            double aCoeff = a->coefficient;
+            double bCoeff = b->coefficient;
+            double answer = aCoeff - bCoeff;
+
+            printf("%lf", answer);
+        }
+    }
+    displayPoly(p1);
+    return p1;
 }
 
 /*
@@ -276,9 +296,9 @@ polynomial *multiplyPoly(polynomial *p)
 	Function that takes a polynomial, constructs and returns 
 	a new polynomial that is the result of dividing polynomial p and double value
 */
-polynomial *dividePoly(polynomial *p)
+  polynomial *dividePoly(polynomial *p)
 {
-  //READ IN DOUBLE USING SCANF TO MULTIPLY/DIVIDE BY
+
 }
 
 /*
