@@ -33,9 +33,9 @@ int main()
 
     printf("\nCreate new polynomials:\nInput values for 1st Polynomial:");
     poly1 = createPoly();
+    displayPoly(poly1);
     printf("\nInput values for 2nd Polynomial:");
     poly2 = createPoly();
-    displayPoly(poly1);
     displayPoly(poly2);
     printf("\nAdd polynomial:\n");
     addPoly(poly1, poly2);

@@ -43,7 +43,7 @@ polynomial* createPoly()
             // that head points to tail (NULL) and current is head
             list->head->successor = NULL;
             list->current = list->head;
-            for (int i = 0; i < exponent + 1; i++) {
+            for (int i = exponent; i >= 0; i--) {
                 insertAfter(list, i);
             }
         }
@@ -118,47 +118,30 @@ polyError insertAfter(polynomial* poly, int exponent)
     if (newnode == NULL) {
         // allocation failure
         returnvalue = noMemory;
-    }
-    else {
+    }else {
         // allocation successful
         // associate data d with newnode
         newnode->d = newdata;
-        // link newnode into linked list
-        // 1. set succcessor of newnode to current nodes's successor
-        newnode->successor = poly->current->successor;
-        // 2. set successor of current node to newnode
-        poly->current->successor = newnode;
-    }
-    return returnvalue;
-}
+        newnode->successor=NULL;
 
-///////////////////////////////////////////////////////
-// deleteNext(list)
-// removes successor of node from linked list
-//
-// parameter: list - pointer to list from which node is
-//                   to be removed
-// return: ok - node has been removed
-//         illegalNode - cannot remove as successor
-//                       of current is tail
-///////////////////////////////////////////////////////
-polyError deleteNext(polynomial* list)
-{
-    polyError result = ok;
-    polyNode* todelete;
-    if (list->current->successor == NULL) {
-        // successor of current is tail => cannot remove node
-        result = illegalNode;
+    if(poly->head==NULL)
+    {
+      poly->head=newnode;
+      poly->current=newnode;
     }
-    else {
-        // 1. keep pointer to node to be deleted
-        todelete = list->current->successor;
-        // 2. set successor of current to successor of node to be deleted
-        list->current->successor = todelete->successor;
-        // 3. delete node from memory
-        free(todelete);
+    else
+    {
+      polyNode* temp = poly->head;
+        while(temp->successor!=NULL)
+        {
+        temp = temp->successor;
+        }
+      temp->successor = newnode;
     }
-    return result;
+        }
+
+
+    return returnvalue;
 }
 
 ///////////////////////////////////////////////////////
@@ -222,8 +205,7 @@ term* accessData(polynomial* poly)
 	Function that takes two polynomials, constructs and returns 
 	a new polynomial that is the result of adding polynomials p1 and p2
 */
-polynomial* addPoly(polynomial* p1, polynomial* p2)
-{
+polynomial* addPoly(polynomial* p1, polynomial* p2){
     if (p1 != NULL && p2 != NULL) {
         gotoHead(p1);
         gotoHead(p2);
@@ -231,6 +213,8 @@ polynomial* addPoly(polynomial* p1, polynomial* p2)
         while (gotoNextNode(p1) == ok && gotoNextNode(p2) == ok) {
             term* a = accessData(p1);
             term* b = accessData(p2);
+            int aExp = a->exponent;
+            int bExp = b->exponent; //FOR CROSS ORDER POLY BUILDING
             double aCoeff = a->coefficient;
             double bCoeff = b->coefficient;
             double answer = aCoeff + bCoeff;
@@ -280,15 +264,14 @@ polynomial* multiplyPoly(polynomial* p)
     double value = 4;
 
     if (p != NULL) {
+      printf("Multiplying by %0.lf",value);
         while (gotoNextNode(p) == ok) {
-
             term* polyTerm = accessData(p);
             double multiplyResult = (polyTerm->coefficient);
             multiplyResult = multiplyResult * value;
-            printf("New Coeff = %0.lf \n", multiplyResult);
             polyTerm->coefficient = multiplyResult;
         }
-        printf("New Polynomial: ");
+        printf("\nNew Polynomial: ");
         displayPoly(p);
     }
     else {
@@ -307,14 +290,14 @@ polynomial* dividePoly(polynomial* p)
     double value = 2;
 
     if (p != NULL) {
+      printf("Dividing by %0.lf",value);
         while (gotoNextNode(p) == ok) {
             term* polyTerm = accessData(p);
             double divideResult = (polyTerm->coefficient);
             divideResult = divideResult / value;
-            printf("New Coeff = %0.lf \n", divideResult);
             polyTerm->coefficient = divideResult;
         }
-        printf("New Polynomial: ");
+        printf("\nNew Polynomial: ");
         displayPoly(p);
     }
     else {

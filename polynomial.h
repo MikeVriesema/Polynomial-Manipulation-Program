@@ -24,18 +24,18 @@ typedef enum {
     noMemory
 } polyError;
 
+
 // DEFINE STRUCTURE FOR TERM (ELEMENT OF POLYNOMIAL)
 typedef struct
     {
     double coefficient;
     int exponent;
 } term;
+
 // DEFINE STRUCTURE FOR A NODE OF POLYNOMIAL
 typedef struct n {
     term d; // STORE A TERM IN THE NODE
-    struct n* successor; // store successor of node
-    // as typedef is not yet completed
-    // name polyNode cannot be used
+    struct n* successor;
 } polyNode;
 
 // DEFINE TYPE FOR LINKED LIST
@@ -49,6 +49,10 @@ typedef struct
  * FUNCTION DECLARATIONS:(IN DEPTH COMMENTS IN polynomial.c FILE)
  * createPoly 
  * deletePoly
+ * accessData
+ * insertAfter
+ * gotoHead
+ * gotoNextNode
  * 
  * addPoly
  * subtractPoly
@@ -58,13 +62,7 @@ typedef struct
  * orderPoly
  * displayPoly
  * 
- * accessData
- * insertAfter
- * deleteNext
- * gotoHead
- * gotoNextNode
  */
-
 polynomial* createPoly();
 void deletePoly(polynomial* poly);
 
@@ -78,7 +76,6 @@ void displayPoly(polynomial* mylist);
 
 term* accessData(polynomial* poly);
 polyError insertAfter(polynomial* poly, int exponent);
-polyError deleteNext(polynomial* poly);
 void gotoHead(polynomial* poly);
 polyError gotoNextNode(polynomial* poly);
 
