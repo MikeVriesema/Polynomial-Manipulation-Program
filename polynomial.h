@@ -68,8 +68,8 @@ void deletePoly(polynomial* poly);
 
 polynomial* addPoly(polynomial* p1, polynomial* p2);
 polynomial* subtractPoly(polynomial* p1, polynomial* p2);
-polynomial* multiplyPoly(polynomial* p);
-polynomial* dividePoly(polynomial* p);
+polynomial* multiplyPoly(polynomial* p,double value);
+polynomial* dividePoly(polynomial* p,double value);
 polynomial* normalisePoly(polynomial* p);
 void orderPoly(polynomial* p);
 void displayPoly(polynomial* mylist);

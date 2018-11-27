@@ -213,8 +213,6 @@ polynomial* addPoly(polynomial* p1, polynomial* p2){
         while (gotoNextNode(p1) == ok && gotoNextNode(p2) == ok) {
             term* a = accessData(p1);
             term* b = accessData(p2);
-            int aExp = a->exponent;
-            int bExp = b->exponent; //FOR CROSS ORDER POLY BUILDING
             double aCoeff = a->coefficient;
             double bCoeff = b->coefficient;
             double answer = aCoeff + bCoeff;
@@ -258,10 +256,9 @@ polynomial* subtractPoly(polynomial* p1, polynomial* p2)
 	Function that takes a polynomial, constructs and returns 
 	a new polynomial that is the result of multiplying polynomial p and double value
 */
-polynomial* multiplyPoly(polynomial* p)
+polynomial* multiplyPoly(polynomial* p,double value)
 {
     gotoHead(p);
-    double value = 4;
 
     if (p != NULL) {
       printf("Multiplying by %0.lf",value);
@@ -284,10 +281,9 @@ polynomial* multiplyPoly(polynomial* p)
 	Function that takes a polynomial, constructs and returns 
 	a new polynomial that is the result of dividing polynomial p and double value
 */
-polynomial* dividePoly(polynomial* p)
+polynomial* dividePoly(polynomial* p,double value)
 {
     gotoHead(p);
-    double value = 2;
 
     if (p != NULL) {
       printf("Dividing by %0.lf",value);
@@ -310,8 +306,18 @@ polynomial* dividePoly(polynomial* p)
 	Function that normalises the polynomial adjusting the coefficients so that
     the coefficient of the highest order is 1
 */
-polynomial* normalisePoly(polynomial* p)
-{
+polynomial* normalisePoly(polynomial* p){
+    gotoHead(p);
+    if(p != NULL){
+        if(gotoNextNode(p) == ok){
+            term* polyTerm = accessData(p);
+            double coeff = polyTerm->coefficient;
+            dividePoly(p,coeff);
+        }
+    }else {
+        printf("Create a polynomial");
+    }
+    return p;
 }
 
 /*
@@ -352,26 +358,28 @@ void displayPoly(polynomial* mylist)
                 }
                 else {
                     term* d = accessData(mylist);
-                    if (d->coefficient > 0) {
-                        if (d->exponent == 1) {
-                            printf("+%.0lfX ", d->coefficient);
-                        }
-                        else if (d->exponent == 0) {
-                            printf("+%.0lf ", d->coefficient);
-                        }
-                        else {
-                            printf("+%.0lfX^%d ", d->coefficient, d->exponent);
-                        }
-                    }
-                    else {
-                        if (d->exponent == 1) {
-                            printf("%.0lfX ", d->coefficient);
-                        }
-                        else if (d->exponent == 0) {
-                            printf("%.0lf ", d->coefficient);
+                    if(d->coefficient != 0){
+                        if (d->coefficient > 0) {
+                            if (d->exponent == 1) {
+                                printf("+%.0lfX ", d->coefficient);
+                            }
+                            else if (d->exponent == 0) {
+                                printf("+%.0lf ", d->coefficient);
+                            }
+                            else {
+                                printf("+%.0lfX^%d ", d->coefficient, d->exponent);
+                            }
                         }
                         else {
-                            printf("%.0lfX^%d ", d->coefficient, d->exponent);
+                            if (d->exponent == 1) {
+                                printf("%.0lfX ", d->coefficient);
+                            }
+                            else if (d->exponent == 0) {
+                                printf("%.0lf ", d->coefficient);
+                            }
+                            else {
+                                printf("%.0lfX^%d ", d->coefficient, d->exponent);
+                            }
                         }
                     }
                 }

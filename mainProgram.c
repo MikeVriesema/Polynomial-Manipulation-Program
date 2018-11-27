@@ -42,11 +42,11 @@ int main()
     printf("\nSubtract polynomial:\n");
     subtractPoly(poly1, poly2);
     printf("\nMultiply polynomial:\n");
-    multiplyPoly(poly1);
+    multiplyPoly(poly1,4);
     printf("\nDivide polynomial:\n");
-    dividePoly(poly1);
+    dividePoly(poly1,2);
     printf("\nNormalise polynomial:\n");
-    //normalisePoly();
+    normalisePoly(poly1);
     printf("\nReturn order of polynomial:\n");
     orderPoly(poly1);
     printf("\nDelete polynomial:\n");
