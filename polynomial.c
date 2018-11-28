@@ -20,13 +20,14 @@
 #include <stdio.h>
 #include "polynomial.h"
 
-// listCreate()
-// creates an empty linked list, head points to tail
-// which is implemented as NULL
-//
-// parameter: none
-// return: pointer to list if success
-//         pointer to NULL on failure
+/*
+* listCreate()* creates an empty linked list, head points to tail
+* which is implemented as NULL
+*
+* parameter: none
+* return: pointer to list if success
+*         pointer to NULL on failure
+*/
 polynomial* createPoly()
 {
     int exponent;
@@ -59,13 +60,13 @@ polynomial* createPoly()
     return list;
 }
 
-///////////////////////////////////////////////////////
-// listDelete(list)
-// deletes the entire list of which head is head-node
-//
-// parameter:	head - head of a valid list
-// return:		void
-///////////////////////////////////////////////////////
+/*
+* listDelete(list)
+* deletes the entire list of which head is head-node
+*
+* parameter:	head - head of a valid list
+* return:		void
+*/
 void deletePoly(polynomial* poly)
 {
     polyNode* next;
@@ -92,17 +93,17 @@ void deletePoly(polynomial* poly)
     }
 }
 
-///////////////////////////////////////////////////////
-// insertAfter(d, list)
-// creates a new node newnode, associates data d with
-// newnode and inserts newnode in linse as successor of
-// current node
-//
-// parameter: d - data to be associated with newnode
-//            list - list into which to insert d
-// return: ok - insertion successful
-//         noMemory - no memory available to create newnode
-///////////////////////////////////////////////////////
+/*
+* insertAfter(d, list)
+* creates a new node newnode, associates data d with
+* newnode and inserts newnode in linse as successor of
+* current node
+*
+* parameter: d - data to be associated with newnode
+*            list - list into which to insert d
+* return: ok - insertion successful
+         noMemory - no memory available to create newnode
+*/
 polyError insertAfter(polynomial* poly, int exponent)
 {
     polyError returnvalue = ok;
@@ -144,27 +145,27 @@ polyError insertAfter(polynomial* poly, int exponent)
     return returnvalue;
 }
 
-///////////////////////////////////////////////////////
-// gotoHead(list)
-// sets current node of list to head
-//
-// parameter: list - list to be reset
-// return: void
-///////////////////////////////////////////////////////
+/*
+* gotoHead(list)
+* sets current node of list to head
+*
+* parameter: list - list to be reset
+* return: void
+*/
 void gotoHead(polynomial* poly)
 {
     // reset curren to head
     poly->current = poly->head;
 }
 
-///////////////////////////////////////////////////////
-// gotoNextNode(list)
-// sets current node of list to its successor
-//
-// parameter: list - list to be traversed
-// return: ok - current has been set to successor
-//         illegalNode - successor of current it tail
-///////////////////////////////////////////////////////
+/*
+* gotoNextNode(list)
+* sets current node of list to its successor
+*
+* parameter: list - list to be traversed
+* return: ok - current has been set to successor
+*         illegalNode - successor of current it tail
+*/
 polyError gotoNextNode(polynomial* poly)
 {
     polyError result = ok;
@@ -180,14 +181,14 @@ polyError gotoNextNode(polynomial* poly)
     return result;
 }
 
-///////////////////////////////////////////////////////
-// accessData
-// returns data of current node
-//
-// parameter: list - list to be accessed
-// return: if current is head or tail: NULL
-//         otherwise, data of current node
-///////////////////////////////////////////////////////
+/*
+* accessData
+* returns data of current node
+*
+* parameter: list - list to be accessed
+* return: if current is head or tail: NULL
+*         otherwise, data of current node
+*/
 term* accessData(polynomial* poly)
 {
     // is current head or tail?
@@ -202,8 +203,11 @@ term* accessData(polynomial* poly)
 }
 
 /*
-	Function that takes two polynomials, constructs and returns 
-	a new polynomial that is the result of adding polynomials p1 and p2
+*	Function that takes two polynomials, constructs and returns 
+*	a new polynomial that is the result of adding polynomials p1 and p2
+*
+*   parameter: two lists - lists to be accessed
+*   return: list  -result of the addition
 */
 polynomial* addPoly(polynomial* p1, polynomial* p2){
     if (p1 != NULL && p2 != NULL) {
@@ -227,8 +231,11 @@ polynomial* addPoly(polynomial* p1, polynomial* p2){
 }
 
 /*
-	Function that takes two polynomials, constructs and returns 
-	a new polynomial that is the result of subtracting polynomial p2 from p
+*	Function that takes two polynomials, constructs and returns 
+*	a new polynomial that is the result of subtracting polynomial p2 from p
+*
+*   parameter: two lists -lists to be accessed 
+*   return: list -result of the subtraction
 */
 polynomial* subtractPoly(polynomial* p1, polynomial* p2)
 {
@@ -253,8 +260,12 @@ polynomial* subtractPoly(polynomial* p1, polynomial* p2)
 }
 
 /*
-	Function that takes a polynomial, constructs and returns 
-	a new polynomial that is the result of multiplying polynomial p and double value
+*	Function that takes a polynomial, constructs and returns 
+*   a new polynomial that is the result of multiplying polynomial p and double value
+*
+*   parameter: list - list to be accessed
+*               double - value to multiply by
+*   return: list -result of multiply
 */
 polynomial* multiplyPoly(polynomial* p,double value)
 {
@@ -278,8 +289,12 @@ polynomial* multiplyPoly(polynomial* p,double value)
 }
 
 /*
-	Function that takes a polynomial, constructs and returns 
-	a new polynomial that is the result of dividing polynomial p and double value
+*	Function that takes a polynomial, constructs and returns 
+*	a new polynomial that is the result of dividing polynomial p and double value
+*    
+*   parameter: list - to be accessed
+*               double - to be divided 
+*   return: list -result of division
 */
 polynomial* dividePoly(polynomial* p,double value)
 {
@@ -303,8 +318,11 @@ polynomial* dividePoly(polynomial* p,double value)
 }
 
 /*
-	Function that normalises the polynomial adjusting the coefficients so that
-    the coefficient of the highest order is 1
+*	Function that normalises the polynomial adjusting the coefficients so that
+*   the coefficient of the highest order is 1
+*
+*   parameter: list - list to be accessed
+*   return: list - result of the normalisation
 */
 polynomial* normalisePoly(polynomial* p){
     gotoHead(p);
@@ -321,9 +339,13 @@ polynomial* normalisePoly(polynomial* p){
 }
 
 /*
-	Function that displays the highest order of the polynomial
-    returning the highest power and the coefficient
+*	Function that displays the highest order of the polynomial
+*   returning the highest power and the coefficient
+*
+*   parameter: list - list to be accessed
+*   return: void
 */
+
 void orderPoly(polynomial* p)
 {
     if (p != NULL) {
@@ -339,8 +361,11 @@ void orderPoly(polynomial* p)
 }
 
 /*
-	Function that displays the polynomial to the standard output
-	in the traditional mathematical form
+*	Function that displays the polynomial to the standard output
+*	in the traditional mathematical form
+*
+*   parameter: list - list to be accessed
+*   return: void
 */
 void displayPoly(polynomial* mylist)
 {
