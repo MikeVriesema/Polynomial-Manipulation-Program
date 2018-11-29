@@ -27,7 +27,7 @@
  * preset hardcoded values for the polynomials
  * 
  * Parameters - void
- * Returns - exit success if porgram completes
+ * Returns - exit success if program completes
 */
 int main(){
     polynomial* poly1 = NULL;
@@ -44,13 +44,13 @@ int main(){
     poly2 = createPoly(value);
     displayPoly(poly2);
     printf("\nAdd polynomial:\n");
-    addPoly(poly1, poly2);
+    addPoly(poly2, poly1);
     printf("\nSubtract polynomial:\n");
     subtractPoly(poly1, poly2);
     printf("\nMultiply polynomial:\n");
     multiplyPoly(poly1,4);
     printf("\nDivide polynomial:\n");
-    dividePoly(poly1,2);
+    dividePoly(poly2,2);
     printf("\nNormalise polynomial:\n");
     normalisePoly(poly1);
     printf("\nReturn order of polynomial:\n");
