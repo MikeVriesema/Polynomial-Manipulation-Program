@@ -14,11 +14,9 @@
  * 
  * Date Last Modified: 29.11.2018
  *///////////////////////////////////////////////////////////////////////
-
 #include <stdlib.h>
 #include <stdio.h>
 #include "polynomial.h"
-
 
 /*
  * The main 

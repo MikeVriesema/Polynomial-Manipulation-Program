@@ -57,7 +57,6 @@ polynomial* createPoly(int value){
 // will return NULL which indicates also invalid
 
 
-
 /* deletePoly(poly)
  * deletes the entire polynomial of which head is head-node
  *

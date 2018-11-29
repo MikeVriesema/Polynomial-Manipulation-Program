@@ -24,7 +24,6 @@ typedef enum {
     noMemory
 } polyError;
 
-
 // DEFINE STRUCTURE FOR TERM (ELEMENT OF POLYNOMIAL)
 typedef struct
     {
