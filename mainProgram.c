@@ -7,35 +7,41 @@
  * 
  * Authors: 
  *      Mike Vriesema 17212359 
- * 			Luke O'Sullivan Griffin 17184614 
- * 			Ryan O'Connor 17209382 
- * 			Conall McAteer 18173586 
- * 			Gearoid Kirwan 17213266
+ * 		Luke O'Sullivan Griffin 17184614 
+ * 		Ryan O'Connor 17209382 
+ * 		Conall McAteer 18173586 
+ * 		Gearoid Kirwan 17213266
  * 
- * Date Last Modified: 22.11.2018
+ * Date Last Modified: 29.11.2018
  *///////////////////////////////////////////////////////////////////////
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "polynomial.h"
 
-//FUNCTION DECLARATIONS:
 
 /*
  * The main 
+ * 
+ * Runs through all methods in polynomial.c as a driver main with 
+ * preset hardcoded values for the polynomials
+ * 
+ * Parameters - void
+ * Returns - exit success if porgram completes
 */
-int main()
-{
+int main(){
     polynomial* poly1 = NULL;
     polynomial* poly2 = NULL;
 
-    // Provide tests for all operations
+    //hard coded order/exponent value for createPoly
+    int value = 5;
 
-    printf("\nCreate new polynomials:\nInput values for 1st Polynomial:");
-    poly1 = createPoly();
+    // Provide tests for all operations
+    printf("\nCreate new 1st polynomial:");
+    poly1 = createPoly(value);
     displayPoly(poly1);
-    printf("\nInput values for 2nd Polynomial:");
-    poly2 = createPoly();
+    printf("\nCreate new 2nd polynomial:");
+    poly2 = createPoly(value);
     displayPoly(poly2);
     printf("\nAdd polynomial:\n");
     addPoly(poly1, poly2);
@@ -51,9 +57,9 @@ int main()
     orderPoly(poly1);
     printf("\nDelete polynomial:\n");
     deletePoly(poly1);
-    printf("\nDisplay polynomial:\n");
-    displayPoly(poly1);
     printf("\nExit Program\n");
 
     return EXIT_SUCCESS;
 }
+
+

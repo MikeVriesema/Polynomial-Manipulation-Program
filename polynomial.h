@@ -7,17 +7,17 @@
  * 
  * Authors: 
  *          Mike Vriesema 17212359 
- * 			    Luke O'Sullivan Griffin 17184614 
- * 			    Ryan O'Connor 17209382 
- * 			    Conall McAteer 18173586 
- * 			    Gearoid Kirwan 17213266
+ * 			Luke O'Sullivan Griffin 17184614 
+ * 			Ryan O'Connor 17209382 
+ * 			Conall McAteer 18173586 
+ * 			Gearoid Kirwan 17213266
  * 
- * Date Last Modified: 24.11.2018
+ * Date Last Modified: 29.11.2018
  *///////////////////////////////////////////////////////////////////////
 #ifndef POLYNOMIAL_H
 #define POLYNOMIAL_H
 
-// DEFINE ERROR CODES FOR LINKED LIST
+// DEFINE ERROR CODES FOR POLYNOMIAL
 typedef enum {
     ok,
     illegalNode,
@@ -38,14 +38,14 @@ typedef struct n {
     struct n* successor;
 } polyNode;
 
-// DEFINE TYPE FOR LINKED LIST
+// DEFINE TYPE FOR POLYNOMIAL
 typedef struct
     {
     polyNode* head;
     polyNode* current;
 } polynomial;
 
-/**
+/*
  * FUNCTION DECLARATIONS:(IN DEPTH COMMENTS IN polynomial.c FILE)
  * createPoly 
  * deletePoly
@@ -61,10 +61,13 @@ typedef struct
  * normalisePoly
  * orderPoly
  * displayPoly
- * 
  */
 polynomial* createPoly();
 void deletePoly(polynomial* poly);
+term* accessData(polynomial* poly);
+polyError insertAfter(polynomial* poly, int exponent,double coefficient);
+void gotoHead(polynomial* poly);
+polyError gotoNextNode(polynomial* poly);
 
 polynomial* addPoly(polynomial* p1, polynomial* p2);
 polynomial* subtractPoly(polynomial* p1, polynomial* p2);
@@ -73,10 +76,5 @@ polynomial* dividePoly(polynomial* p,double value);
 polynomial* normalisePoly(polynomial* p);
 void orderPoly(polynomial* p);
 void displayPoly(polynomial* mylist);
-
-term* accessData(polynomial* poly);
-polyError insertAfter(polynomial* poly, int exponent);
-void gotoHead(polynomial* poly);
-polyError gotoNextNode(polynomial* poly);
 
 #endif
